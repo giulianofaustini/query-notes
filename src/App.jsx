@@ -1,3 +1,7 @@
+import React from "react"
+import { useQuery } from "@tanstack/react-query"
+import axios from "axios"
+
 const App = () => {
   const addNote = async (event) => {
     event.preventDefault()
@@ -5,12 +9,22 @@ const App = () => {
     event.target.note.value = ''
     console.log(content)
   }
-
   const toggleImportance = (note) => {
     console.log('toggle importance of', note.id)
   }
 
-  const notes = []
+
+  const result = useQuery({
+    queryKey: ['notes'],
+    queryFn: () => axios.get('http://localhost:3001/notes').then(res =>  res.data)
+  })
+  console.log(JSON.parse(JSON.stringify(result)))
+
+  if (result.isLoading){
+    return <div>loading data...</div>
+  }
+
+  const notes = result.data
 
   return(
     <div>
