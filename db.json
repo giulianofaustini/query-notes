@@ -7,13 +7,18 @@
     },
     {
       "content": "state changes are made with actions",
-      "important": false,
+      "important": true,
       "id": 2
     },
     {
       "content": "state is stored in the backend",
-      "important": false,
+      "important": true,
       "id": 3
+    },
+    {
+      "content": "one two three four",
+      "important": true,
+      "id": 4
     }
   ]
 }
